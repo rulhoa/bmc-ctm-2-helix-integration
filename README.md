@@ -12,10 +12,12 @@ Usage steps:
 5) Search for "Control-M Job". If any were discovered and modeled they'll be under "Deployment".
 6) Open visualization for any job.
 7) Change "Display" option to "All directly connected nodes->Directly Connected"
-Jobs (Deployments) will be connected to Collections: Folders, subfolders, applications, and subapplications.
-Jobs may also be connected to Control-M/Server and Agent responsible for it.
-Jobs may also be connected to connection profiles.
 
+Jobs (Deployments) will be connected to Collections: Folders, subfolders, applications, and subapplications.
+
+Jobs may also be connected to Control-M/Server and Agent responsible for it.
+
+Jobs may also be connected to connection profiles.
 
 
 ## blueprints
@@ -34,9 +36,12 @@ Used by Control-M alert engine scripts.
 ### Control Alert Engine Scripts
 
 Recommended the usage of:
+
 https://github.com/dcompane/controlm_toolset/tree/main/sendAlarmToScript/Python/BHOM
 
-There is also an official version in the public Control-M repo, but it doesn't provide enough information to events for BHOM to uniquely lookup the alerting job in DSM: https://github.com/controlm/automation-api-community-solutions/blob/master/helix-control-m/2-external-monitoring-tools-examples/alerts-to-bhom/README.md
+There is also an official version in the public Control-M repo, but it doesn't provide enough information to events for BHOM to uniquely lookup the alerting job in DSM:
+
+https://github.com/controlm/automation-api-community-solutions/blob/master/helix-control-m/2-external-monitoring-tools-examples/alerts-to-bhom/README.md
 
 
 ## event_policies
@@ -50,5 +55,6 @@ Create by SEAL team for collecting metrics from Control-M using the script KM to
 ## dashboards
 
 Also by SEAL Team.
+
 Helix Dashboards that leverage metrics collected by the monitor_policies for a Control-M Workflow Insights experience inside Helix.
 
