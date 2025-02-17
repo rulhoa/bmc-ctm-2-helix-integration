@@ -1,0 +1,1742 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_BMC_HELIX",
+      "label": "BMC Helix",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "bmchelix-ade-datasource",
+      "pluginName": "BMC Helix"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "barchart",
+      "name": "Bar chart",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "bmchelix-ade-datasource",
+      "name": "BMC Helix",
+      "version": "3.0.1"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.4.2"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "D",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_JOB\", taskType=\"Dummy\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Total Dummy executions",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": []
+              },
+              "Value": {
+                "aggregations": []
+              },
+              "__name__": {
+                "aggregations": []
+              },
+              "endTime": {
+                "aggregations": [
+                  "distinctCount"
+                ],
+                "operation": "aggregate"
+              },
+              "name": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "Daily Dummy Executions",
+          "mappings": [],
+          "noValue": "No Dummy Executions",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 18,
+        "x": 6,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "sum(count_over_time(Status{entityTypeId=\"CTRLM_JOB\", taskType=\"Dummy\"}[1d]))",
+            "instant": false,
+            "interval": "1d",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "timeFrom": "1w",
+      "title": "Daily Dummy executions",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Ended Not OK",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Ended Not OK"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 7,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false
+        },
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_JOB\", taskType=\"Dummy\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{ name }}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Top 10 Dummy Jobs that had the highest number of executions",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "endTime": {
+                "aggregations": [
+                  "distinctCount"
+                ],
+                "operation": "aggregate"
+              },
+              "name": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "endTime (distinctCount)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "limit",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "endTime (distinctCount)": "Ended Not OK",
+              "name": "Job Name"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Folder"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 92
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Application"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 108
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Host"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 151
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Control-M Server"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 122
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Job Name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 163
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 8,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_JOB\", taskType=\"Dummy\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Dummy Jobs that had the highest number of executions",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "application": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "ctm": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "endTime": {
+                "aggregations": [
+                  "distinctCount"
+                ],
+                "operation": "aggregate"
+              },
+              "folder": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "hostname": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "name": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "subApplication": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "taskType": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "application": 3,
+              "ctm": 1,
+              "endTime (distinctCount)": 7,
+              "folder": 2,
+              "hostname": 5,
+              "name": 0,
+              "subApplication": 4,
+              "taskType": 6
+            },
+            "renameByName": {
+              "application": "Application",
+              "ctm": "Control-M Server",
+              "endTime (distinctCount)": "Ended Not OK",
+              "folder": "Folder",
+              "hostname": "Host",
+              "name": "Job Name",
+              "subApplication": "Sub Application",
+              "taskType": "Job Type"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Ended Not OK",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "purple",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Ended Not OK"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 9,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false
+        },
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_JOB\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{ application }}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Top 10 Hosts that executed the lowest number of Jobs",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "application": {
+                "aggregations": []
+              },
+              "endTime": {
+                "aggregations": [
+                  "distinctCount"
+                ],
+                "operation": "aggregate"
+              },
+              "name": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": false,
+                "field": "endTime (distinctCount)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "limit",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "application": "Application",
+              "endTime (distinctCount)": "Ended Not OK"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Ended Not OK",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Ended Not OK"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "id": 17,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false
+        },
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_JOB\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{ application }}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Top 10 Hosts that executed the highest number of Jobs",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "application": {
+                "aggregations": []
+              },
+              "endTime": {
+                "aggregations": [
+                  "distinctCount"
+                ],
+                "operation": "aggregate"
+              },
+              "name": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "endTime (distinctCount)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "limit",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "application": "Application",
+              "endTime (distinctCount)": "Ended Not OK"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 12,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_JOB\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Hosts that executed the highest number of Jobs",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": []
+              },
+              "Value": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "application": {
+                "aggregations": []
+              },
+              "ctm": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "endTime": {
+                "aggregations": [
+                  "distinctCount"
+                ],
+                "operation": "aggregate"
+              },
+              "folder": {
+                "aggregations": []
+              },
+              "host": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "name": {
+                "aggregations": []
+              },
+              "type": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Value (sum)": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Value (sum)": 3,
+              "ctm": 1,
+              "endTime (distinctCount)": 4,
+              "host": 0,
+              "type": 2
+            },
+            "renameByName": {
+              "Value (count)": "",
+              "Value (sum)": "Ended Not Ok",
+              "application": "Application",
+              "ctm": "Control-M Server",
+              "endTime (distinctCount)": "Jobs Executed",
+              "folder": "Folder",
+              "name": "Job Name"
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Jobs Executed"
+              }
+            ]
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 31
+      },
+      "id": 13,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false
+        },
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_JOB\", cyclic=\"false\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{ host}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Top 10 non Cyclic Jobs that had the highest number of Reruns",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "endTime": {
+                "aggregations": []
+              },
+              "host": {
+                "aggregations": []
+              },
+              "name": {
+                "aggregations": [
+                  "max"
+                ],
+                "operation": "groupby"
+              },
+              "numberOfRuns": {
+                "aggregations": [
+                  "max"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "endTime (distinctCount)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "limit",
+          "options": {}
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "numberOfRuns (max)"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 31
+      },
+      "id": 18,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_JOB\", cyclic=\"false\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{ host}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Non Cyclic Jobs that had the highest number of Reruns",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "endTime": {
+                "aggregations": []
+              },
+              "host": {
+                "aggregations": []
+              },
+              "name": {
+                "aggregations": [
+                  "max"
+                ],
+                "operation": "groupby"
+              },
+              "numberOfRuns": {
+                "aggregations": [
+                  "max"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "endTime (distinctCount)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "limit",
+          "options": {}
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "numberOfRuns (max)"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "yellow",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 39
+      },
+      "id": 19,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "orientation": "horizontal",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "B",
+          "sourceQuery": {
+            "expr": "ExecutionTime{entityTypeId=\"CTRLM_JOB\"}/60",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{name}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Top 10 Jobs that had the longest average duration",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Value": {
+                "aggregations": [
+                  "mean"
+                ],
+                "operation": "aggregate"
+              },
+              "name": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Value (mean)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "limit",
+          "options": {}
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Job Type"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 89
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sub Application"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 139
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Folder"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 127
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 39
+      },
+      "id": 20,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "B",
+          "sourceQuery": {
+            "expr": "ExecutionTime{entityTypeId=\"CTRLM_JOB\"}/60",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{name}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Jobs that had the longest average duration",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Value": {
+                "aggregations": [
+                  "mean"
+                ],
+                "operation": "aggregate"
+              },
+              "application": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "ctm": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "folder": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "host": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "name": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "subApplication": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "type": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Value (mean)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Value (mean)": "Job Avg. duration (Min)",
+              "application": "Application",
+              "ctm": "Control-M Server",
+              "folder": "Folder",
+              "host": "Host",
+              "name": "Job Name",
+              "subApplication": "Sub Application",
+              "type": "Job Type"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "datasource": {
+          "type": "bmchelix-ade-datasource",
+          "uid": "YU1v37-7z"
+        },
+        "filters": [],
+        "hide": 0,
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Optimization Insights",
+  "uid": "aduy3l1kvn08we",
+  "version": 15,
+  "weekStart": ""
+}

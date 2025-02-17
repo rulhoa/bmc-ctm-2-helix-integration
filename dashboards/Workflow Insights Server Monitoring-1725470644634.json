@@ -1,0 +1,1727 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_BMC_HELIX",
+      "label": "BMC Helix",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "bmchelix-ade-datasource",
+      "pluginName": "BMC Helix"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "datasource",
+      "id": "bmchelix-ade-datasource",
+      "name": "BMC Helix",
+      "version": "3.0.1"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.4.2"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "state-timeline",
+      "name": "State timeline",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 7,
+      "panels": [],
+      "title": "Workflow Insights Server Overview",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "color": "green",
+                        "index": 0,
+                        "text": "Available"
+                      }
+                    },
+                    "type": "value"
+                  },
+                  {
+                    "options": {
+                      "from": 1,
+                      "result": {
+                        "color": "red",
+                        "index": 1,
+                        "text": "Unavailable"
+                      },
+                      "to": 100000
+                    },
+                    "type": "range"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 0,
+        "y": 1
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_WFI_SERVER\"}",
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Server Status",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 3,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "NumberOfNodes{entityTypeId=\"CTRLM_WFI_SERVER\"}",
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Number of Nodes",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "orange",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 6,
+        "y": 1
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "NumberOfRecords{entityTypeId=\"CTRLM_WFI_SERVER\"}",
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Number of Records",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "purple",
+                "value": null
+              }
+            ]
+          },
+          "unit": "d"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 9,
+        "y": 1
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "(now() - (OldestItemDate{entityTypeId=\"CTRLM_WFI_SERVER\"}) / 1000) / 86400",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Oldest Item Date",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "color": "green",
+                        "index": 0,
+                        "text": "Available"
+                      }
+                    },
+                    "type": "value"
+                  },
+                  {
+                    "options": {
+                      "from": 1,
+                      "result": {
+                        "color": "red",
+                        "index": 1,
+                        "text": "Unavailable"
+                      },
+                      "to": 100000
+                    },
+                    "type": "range"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 5,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_WFI_SERVER\"}",
+            "interval": "",
+            "legendFormat": "{{__name__}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Server Status Timeline",
+      "type": "state-timeline"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 8,
+      "panels": [],
+      "title": "Workflow Insights Node Overview",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Node"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 325
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Memory Usage"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Host Memory Usage"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk Usage"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Opensearch Disk Usage"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Node Status"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "color": "green",
+                        "index": 0,
+                        "text": "Available"
+                      }
+                    },
+                    "type": "value"
+                  },
+                  {
+                    "options": {
+                      "from": 1,
+                      "result": {
+                        "color": "red",
+                        "index": 1,
+                        "text": "Unavailable"
+                      },
+                      "to": 10000000
+                    },
+                    "type": "range"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total Memory"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "decgbytes"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total Disk Space"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "decgbytes"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk Freespace"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "decgbytes"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "id": 15,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "MemoryUsage{entityTypeId=\"CTRLM_WFI_NODE\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "B",
+          "sourceQuery": {
+            "expr": "HostMemoryUsage{entityTypeId=\"CTRLM_WFI_NODE\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "C",
+          "sourceQuery": {
+            "expr": "TotalMemory{entityTypeId=\"CTRLM_WFI_NODE\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "D",
+          "sourceQuery": {
+            "expr": "DiskFreeSpace{entityTypeId=\"CTRLM_WFI_NODE\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "E",
+          "sourceQuery": {
+            "expr": "DiskUsage{entityTypeId=\"CTRLM_WFI_NODE\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "F",
+          "sourceQuery": {
+            "expr": "OpensearchDiskUsage{entityTypeId=\"CTRLM_WFI_NODE\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "G",
+          "sourceQuery": {
+            "expr": "TotalDiskSpace{entityTypeId=\"CTRLM_WFI_NODE\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "H",
+          "sourceQuery": {
+            "expr": "NodeStatus{entityTypeId=\"CTRLM_WFI_NODE\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Node Details",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "hostname",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              " 1 ": true,
+              "Time": true,
+              "Time 1": true,
+              "Time 2": true,
+              "Time 3": true,
+              "Time 4": true,
+              "Time 5": true,
+              "Time 6": true,
+              "Time 7": true,
+              "Time 8": true,
+              "Value #A": false,
+              "VictoriaMetrics_AccountID": true,
+              "VictoriaMetrics_AccountID 1": true,
+              "VictoriaMetrics_AccountID 2": true,
+              "VictoriaMetrics_AccountID 3": true,
+              "VictoriaMetrics_AccountID 4": true,
+              "VictoriaMetrics_AccountID 5": true,
+              "VictoriaMetrics_AccountID 6": true,
+              "VictoriaMetrics_AccountID 7": true,
+              "VictoriaMetrics_AccountID 8": true,
+              "__name__ 1": true,
+              "__name__ 2": true,
+              "__name__ 3": true,
+              "__name__ 4": true,
+              "__name__ 5": true,
+              "__name__ 6": true,
+              "__name__ 7": true,
+              "__name__ 8": true,
+              "entityId": true,
+              "entityId 1": true,
+              "entityId 2": true,
+              "entityId 3": true,
+              "entityId 4": true,
+              "entityId 5": true,
+              "entityId 6": true,
+              "entityId 7": true,
+              "entityId 8": true,
+              "entityName": true,
+              "entityName 1": true,
+              "entityName 2": true,
+              "entityName 3": true,
+              "entityName 4": true,
+              "entityName 5": true,
+              "entityName 6": true,
+              "entityName 7": true,
+              "entityName 8": true,
+              "entityTypeId": true,
+              "entityTypeId 1": true,
+              "entityTypeId 2": true,
+              "entityTypeId 3": true,
+              "entityTypeId 4": true,
+              "entityTypeId 5": true,
+              "entityTypeId 6": true,
+              "entityTypeId 7": true,
+              "entityTypeId 8": true,
+              "hostType": true,
+              "hostType 1": true,
+              "hostType 2": true,
+              "hostType 3": true,
+              "hostType 4": true,
+              "hostType 5": true,
+              "hostType 6": true,
+              "hostType 7": true,
+              "hostType 8": true,
+              "instanceName": true,
+              "instanceName 1": true,
+              "instanceName 2": true,
+              "instanceName 3": true,
+              "instanceName 4": true,
+              "instanceName 5": true,
+              "instanceName 6": true,
+              "instanceName 7": true,
+              "instanceName 8": true,
+              "isDeviceMappingEnabled": true,
+              "isDeviceMappingEnabled 1": true,
+              "isDeviceMappingEnabled 2": true,
+              "isDeviceMappingEnabled 3": true,
+              "isDeviceMappingEnabled 4": true,
+              "isDeviceMappingEnabled 5": true,
+              "isDeviceMappingEnabled 6": true,
+              "isDeviceMappingEnabled 7": true,
+              "isDeviceMappingEnabled 8": true,
+              "isKpi": true,
+              "isKpi 1": true,
+              "isKpi 2": true,
+              "isKpi 3": true,
+              "isKpi 4": true,
+              "isKpi 5": true,
+              "isKpi 6": true,
+              "isKpi 7": true,
+              "isKpi 8": true,
+              "source": true,
+              "source 1": true,
+              "source 2": true,
+              "source 3": true,
+              "source 4": true,
+              "source 5": true,
+              "source 6": true,
+              "source 7": true,
+              "source 8": true,
+              "unit": true,
+              "unit 1": true,
+              "unit 2": true,
+              "unit 3": true,
+              "unit 4": true,
+              "unit 5": true,
+              "unit 6": true,
+              "unit 8": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Value #A": "Memory Usage",
+              "Value #B": "Host Memory Usage",
+              "Value #C": "Total Memory",
+              "Value #D": "Disk Freespace",
+              "Value #E": "Disk Usage",
+              "Value #F": "Opensearch Disk Usage",
+              "Value #G": "Total Disk Space",
+              "Value #H": "Node Status",
+              "hostname": "Node"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 15
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "topk(10,MemoryUsage{entityTypeId=\"CTRLM_WFI_NODE\"})",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{hostname}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Top 10 Nodes by Memory Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "ctm-aws-sandbox-insights-2.bmcdemo.com"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 15
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "topk(10,HostMemoryUsage{entityTypeId=\"CTRLM_WFI_NODE\"})",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{hostname}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Top 10 Nodes by Host Memory Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "ctm-aws-sandbox.bmcdemo.com"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 21
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "topk(10,TotalMemory{entityTypeId=\"CTRLM_WFI_NODE\"})",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{hostname}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Top 10 Nodes by Total Memory",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "ctm-aws-sandbox.bmcdemo.com"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 21
+      },
+      "id": 16,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "topk(10,DiskUsage{entityTypeId=\"CTRLM_WFI_NODE\"})",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{hostname}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Top 10 Nodes by Opensearch Disk Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 27
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "topk(10,OpensearchDiskUsage{entityTypeId=\"CTRLM_WFI_NODE\"})",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{hostname}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Top 10 Nodes by Opensearch Disk Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 27
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "topk(10,DiskFreeSpace{entityTypeId=\"CTRLM_WFI_NODE\"})",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{hostname}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Top 10 Nodes by Disk Freespace",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 33
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "topk(10,TotalDiskSpace{entityTypeId=\"CTRLM_WFI_NODE\"})",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{hostname}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Top 10 Nodes by Total Disk Space",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Workflow Insights Server Monitoring",
+  "uid": "bdw4o8ua14c8wc",
+  "version": 21,
+  "weekStart": ""
+}

@@ -1,0 +1,921 @@
+{
+	"attributes": {},
+	"compatibility": "aiops",
+	"conditions": [
+		{
+			"condition": {
+				"items": [
+					{
+						"left": {
+							"name": "name",
+							"type": "attr"
+						},
+						"right": {
+							"name": "uiSelector0",
+							"description": "Select Start CI name",
+							"param_type": "list:string",
+							"type": "parameter"
+						},
+						"type": "in"
+					},
+					{
+						"left": {
+							"name": "type",
+							"type": "attr"
+						},
+						"right": "^Control-M .+older$",
+						"type": "matches"
+					}
+				],
+				"type": "all"
+			},
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "nCollection",
+			"required": true,
+			"type": "node"
+		},
+		{
+			"condition": {
+				"left": {
+					"name": "type",
+					"type": "attr"
+				},
+				"right": "^Control-M .+ Job$",
+				"type": "matches"
+			},
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "nCollection____Deployment____Collection",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"condition": {
+				"left": {
+					"name": "type",
+					"type": "attr"
+				},
+				"right": "^Control-M .+older$",
+				"type": "matches"
+			},
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "n____0",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "n____1",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "n____2",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "n____3",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"condition": {
+				"left": {
+					"name": "type",
+					"type": "attr"
+				},
+				"right": "^Control-M .+older$",
+				"type": "matches"
+			},
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "n____4",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"condition": {
+				"left": {
+					"name": "type",
+					"type": "attr"
+				},
+				"right": "^Control-M .+older$",
+				"type": "matches"
+			},
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "n____5",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"condition": {
+				"left": {
+					"name": "type",
+					"type": "attr"
+				},
+				"right": "^Control-M .+older$",
+				"type": "matches"
+			},
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "n____6",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"condition": {
+				"left": {
+					"name": "type",
+					"type": "attr"
+				},
+				"right": "^Control-M .+older$",
+				"type": "matches"
+			},
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "n____7",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "n____8",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "n____9",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "n____10",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "n____11",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "n____12",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "n____13",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "n____14",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "n____15",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "n____16",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "n____17",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "n____18",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "n____19",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "n____20",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "n____21",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "n____22",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "n____23",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "n____24",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "n____25",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "n____26",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "n____27",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"condition": {
+				"left": {
+					"name": "type",
+					"type": "attr"
+				},
+				"right": "^Control-M .+older$",
+				"type": "matches"
+			},
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "n____28",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"condition": {
+				"left": {
+					"name": "type",
+					"type": "attr"
+				},
+				"right": "^Control-M .+older$",
+				"type": "matches"
+			},
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "n____29",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"condition": {
+				"left": {
+					"name": "type",
+					"type": "attr"
+				},
+				"right": "^Control-M .+older$",
+				"type": "matches"
+			},
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "n____30",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"condition": {
+				"left": {
+					"name": "type",
+					"type": "attr"
+				},
+				"right": "^Control-M .+older$",
+				"type": "matches"
+			},
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "n____31",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"condition": {
+				"left": {
+					"name": "type",
+					"type": "attr"
+				},
+				"right": "^Control-M .+older$",
+				"type": "matches"
+			},
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "n____32",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nCollection",
+					"role": ""
+				},
+				{
+					"ref": "nCollection____Deployment____Collection",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "Dependency",
+			"roles": [
+				{
+					"ref": "nCollection",
+					"role": ""
+				},
+				{
+					"ref": "n____0",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____0",
+					"role": ""
+				},
+				{
+					"ref": "n____1",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nCollection____Deployment____Collection",
+					"role": ""
+				},
+				{
+					"ref": "n____2",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____1",
+					"role": ""
+				},
+				{
+					"ref": "n____3",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "Dependency",
+			"roles": [
+				{
+					"ref": "n____0",
+					"role": ""
+				},
+				{
+					"ref": "n____7",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "Dependency",
+			"roles": [
+				{
+					"ref": "n____7",
+					"role": ""
+				},
+				{
+					"ref": "n____6",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "Dependency",
+			"roles": [
+				{
+					"ref": "n____6",
+					"role": ""
+				},
+				{
+					"ref": "n____5",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "Dependency",
+			"roles": [
+				{
+					"ref": "n____5",
+					"role": ""
+				},
+				{
+					"ref": "n____4",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____7",
+					"role": ""
+				},
+				{
+					"ref": "n____13",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____13",
+					"role": ""
+				},
+				{
+					"ref": "n____12",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____6",
+					"role": ""
+				},
+				{
+					"ref": "n____11",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____11",
+					"role": ""
+				},
+				{
+					"ref": "n____10",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____5",
+					"role": ""
+				},
+				{
+					"ref": "n____9",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____9",
+					"role": ""
+				},
+				{
+					"ref": "n____8",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____4",
+					"role": ""
+				},
+				{
+					"ref": "n____15",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____15",
+					"role": ""
+				},
+				{
+					"ref": "n____14",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nCollection____Deployment____Collection",
+					"role": ""
+				},
+				{
+					"ref": "n____21",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____13",
+					"role": ""
+				},
+				{
+					"ref": "n____20",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____11",
+					"role": ""
+				},
+				{
+					"ref": "n____19",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____9",
+					"role": ""
+				},
+				{
+					"ref": "n____18",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____15",
+					"role": ""
+				},
+				{
+					"ref": "n____17",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____14",
+					"role": ""
+				},
+				{
+					"ref": "n____16",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____2",
+					"role": ""
+				},
+				{
+					"ref": "n____24",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____12",
+					"role": ""
+				},
+				{
+					"ref": "n____23",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____10",
+					"role": ""
+				},
+				{
+					"ref": "n____22",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____1",
+					"role": ""
+				},
+				{
+					"ref": "n____26",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____3",
+					"role": ""
+				},
+				{
+					"ref": "n____25",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____8",
+					"role": ""
+				},
+				{
+					"ref": "n____27",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____2",
+					"role": ""
+				},
+				{
+					"ref": "n____32",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____12",
+					"role": ""
+				},
+				{
+					"ref": "n____31",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____10",
+					"role": ""
+				},
+				{
+					"ref": "n____30",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____8",
+					"role": ""
+				},
+				{
+					"ref": "n____29",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "n____14",
+					"role": ""
+				},
+				{
+					"ref": "n____28",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		}
+	],
+	"description": "Starting from a folder, follow job execution flow through up-to 5 folders ",
+	"kind": "BusinessService",
+	"metadata": {
+		"namespace": "com",
+		"state": "DISABLED",
+		"full_version": "1.0.0"
+	},
+	"name": "Control-M Job Pipeline from Starting Folder",
+	"published": false,
+	"type": "rules_template"
+}

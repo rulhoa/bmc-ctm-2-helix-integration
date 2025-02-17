@@ -1,0 +1,398 @@
+{
+	"attributes": {},
+	"compatibility": "aiops",
+	"conditions": [
+		{
+			"condition": {
+				"items": [
+					{
+						"left": {
+							"name": "name",
+							"type": "attr"
+						},
+						"right": {
+							"description": "Select Start CI name",
+							"name": "uiSelector0",
+							"param_type": "list:string",
+							"type": "parameter"
+						},
+						"type": "in"
+					},
+					{
+						"left": {
+							"name": "type",
+							"type": "attr"
+						},
+						"right": [
+							"Control-M Service"
+						],
+						"type": "in"
+					}
+				],
+				"type": "all"
+			},
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "nnCollection",
+			"required": true,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "nnCollection____SoftwareInstance____Collection",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "nn____0",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "nn____1",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "nn____2",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Collection"
+			],
+			"label": "nn____3",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "nn____4",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "nn____5",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"Deployment"
+			],
+			"label": "nn____6",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "nn____7",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "nn____8",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "nn____9",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "nn____10",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "nn____11",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "nn____12",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"in_model": true,
+			"kind": [
+				"SoftwareInstance"
+			],
+			"label": "nn____13",
+			"required": false,
+			"type": "node"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nnCollection",
+					"role": ""
+				},
+				{
+					"ref": "nnCollection____SoftwareInstance____Collection",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nnCollection",
+					"role": ""
+				},
+				{
+					"ref": "nn____0",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nnCollection",
+					"role": ""
+				},
+				{
+					"ref": "nn____3",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nn____3",
+					"role": ""
+				},
+				{
+					"ref": "nn____2",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nn____2",
+					"role": ""
+				},
+				{
+					"ref": "nn____1",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nn____3",
+					"role": ""
+				},
+				{
+					"ref": "nn____6",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nn____2",
+					"role": ""
+				},
+				{
+					"ref": "nn____5",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nn____1",
+					"role": ""
+				},
+				{
+					"ref": "nn____4",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nn____3",
+					"role": ""
+				},
+				{
+					"ref": "nn____9",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nn____2",
+					"role": ""
+				},
+				{
+					"ref": "nn____8",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nn____1",
+					"role": ""
+				},
+				{
+					"ref": "nn____7",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nn____0",
+					"role": ""
+				},
+				{
+					"ref": "nn____13",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nn____6",
+					"role": ""
+				},
+				{
+					"ref": "nn____12",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nn____5",
+					"role": ""
+				},
+				{
+					"ref": "nn____11",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		},
+		{
+			"kind": "",
+			"roles": [
+				{
+					"ref": "nn____4",
+					"role": ""
+				},
+				{
+					"ref": "nn____10",
+					"role": ""
+				}
+			],
+			"type": "rel"
+		}
+	],
+	"description": "Starting from an SLA job, model a service based on relationships to it",
+	"kind": "BusinessService",
+	"metadata": {
+		"namespace": "com",
+		"state": "DISABLED",
+		"full_version": "1.0.0"
+	},
+	"name": "Control-M SLA Service",
+	"published": false,
+	"type": "rules_template"
+}

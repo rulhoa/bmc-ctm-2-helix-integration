@@ -1,0 +1,568 @@
+{
+  "responseTimeStamp": 1725470617648,
+  "statusCode": "200",
+  "statusMsg": "200",
+  "response": [
+    {
+      "resourceId": "a060d043-19b4-41f3-a4dd-ade60d58558b",
+      "resourceName": "Control-M",
+      "statusCode": "200",
+      "statusMsg": "OK",
+      "monitoringPolicy": {
+        "id": "a060d043-19b4-41f3-a4dd-ade60d58558b",
+        "name": "Control-M",
+        "type": "monitoring",
+        "description": "",
+        "tenant": {
+          "name": "1414537179",
+          "id": "1414537179"
+        },
+        "precedence": 900,
+        "agentSelectionCriteria": "agentName EQUALS \"barbatos.acb-cloud.net\" ",
+        "associatedUserGroup": "995199666751989",
+        "owner": "tbrady",
+        "creationTime": 1720826336438,
+        "associatedUserGroupName": "995199666751989",
+        "monitoringFiles": [
+          {
+            "solutionName": "tro",
+            "solutionVersion": "2.1.02",
+            "monitoringProfile": "TRO",
+            "monitorType": "TRO_Root",
+            "filesDetails": [
+              {
+                "id": "f92988b4-a5c8-48aa-8214-6ab83cddce59",
+                "fileName": "BHOMRestClient.py",
+                "filePath": "/opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/BHOMRestClient.py"
+              },
+              {
+                "id": "18e3ee6a-9b33-458a-a7c5-c2c0d2228f1f",
+                "fileName": "logger.conf",
+                "filePath": "/opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/logger.conf"
+              },
+              {
+                "id": "0ad80170-7161-457e-941f-f39dc9459e47",
+                "fileName": "CTRLMRestClient.py",
+                "filePath": "/opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/CTRLMRestClient.py"
+              },
+              {
+                "id": "11b8cc1b-a0d2-4c83-9829-4b52e31bb2fb",
+                "fileName": "settings.ini",
+                "filePath": "/opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/settings.ini"
+              },
+              {
+                "id": "5919593b-3e9a-44d6-be50-a50703ea6d44",
+                "fileName": "workflowinsights.py",
+                "filePath": "/opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/workflowinsights.py"
+              },
+              {
+                "id": "8b87a419-d638-477c-bc46-5ff22171fbd2",
+                "fileName": "controlm.py",
+                "filePath": "/opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/controlm.py"
+              }
+            ]
+          }
+        ],
+        "category": "",
+        "monitorConfiguration": {
+          "configurations": [
+            {
+              "solutionName": "tro",
+              "solutionVersion": "2.1.02",
+              "monitoringProfile": "TRO",
+              "monitors": [
+                {
+                  "monitorType": "TRO_Root",
+                  "configuration": [
+                    {
+                      "id": "ReadFromFile",
+                      "value": "0",
+                      "secure": false,
+                      "mapDetails": {
+                        "/ReadFromFile": "0"
+                      }
+                    },
+                    {
+                      "id": "Shared_Port",
+                      "value": "22",
+                      "secure": false,
+                      "mapDetails": {
+                        "/Shared_Port": "22"
+                      }
+                    },
+                    {
+                      "id": "Shared_DeviceTimeout",
+                      "value": "5",
+                      "secure": false,
+                      "mapDetails": {
+                        "/Shared_DeviceTimeout": "5"
+                      }
+                    },
+                    {
+                      "id": "Shared_DevicePollInterval",
+                      "value": "300",
+                      "secure": false,
+                      "mapDetails": {
+                        "/Shared_DevicePollInterval": "300"
+                      }
+                    },
+                    {
+                      "id": "Shared_ScriptTimeout",
+                      "value": "30",
+                      "secure": false,
+                      "mapDetails": {
+                        "/Shared_ScriptTimeout": "30"
+                      }
+                    },
+                    {
+                      "id": "Shared_ScriptPollInterval",
+                      "value": "300",
+                      "secure": false,
+                      "mapDetails": {
+                        "/Shared_ScriptPollInterval": "300"
+                      }
+                    },
+                    {
+                      "id": "RootDisplayName",
+                      "value": "Script(Unix)",
+                      "secure": false,
+                      "mapDetails": {
+                        "/RootDisplayName": "Script(Unix)"
+                      }
+                    },
+                    {
+                      "id": "DeviceMapping",
+                      "value": "1",
+                      "secure": false,
+                      "mapDetails": {
+                        "/DeviceMapping": "1"
+                      }
+                    },
+                    {
+                      "id": "CustomMonitorTypesCleanup",
+                      "value": "0",
+                      "secure": false,
+                      "mapDetails": {
+                        "/CustomMonitorTypesCleanup": "0"
+                      }
+                    },
+                    {
+                      "id": "JAVA_HOME",
+                      "value": "/opt/bmc/Patrol3/jdk-11.0.16",
+                      "secure": false,
+                      "mapDetails": {
+                        "/JAVA_HOME": "/opt/bmc/Patrol3/jdk-11.0.16"
+                      }
+                    },
+                    {
+                      "id": "Debug",
+                      "value": "1",
+                      "secure": false,
+                      "mapDetails": {
+                        "/Debug": "1"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "DeviceName",
+                          "value": "localhost",
+                          "secure": false,
+                          "mapDetails": {
+                            "/DeviceName": "localhost"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/DeviceName": "localhost"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "Port",
+                          "value": "22",
+                          "secure": false,
+                          "mapDetails": {
+                            "/Port": "22"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/Port": "22"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "DeviceTimeout",
+                          "value": "5",
+                          "secure": false,
+                          "mapDetails": {
+                            "/DeviceTimeout": "5"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/DeviceTimeout": "5"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "DevicePollInterval",
+                          "value": "900",
+                          "secure": false,
+                          "mapDetails": {
+                            "/DevicePollInterval": "900"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/DevicePollInterval": "900"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "Scripts",
+                          "value": "workflowinsights.py",
+                          "details": [
+                            {
+                              "id": "ScriptName",
+                              "value": "workflowinsights.py",
+                              "secure": false,
+                              "mapDetails": {
+                                "/ScriptName": "workflowinsights.py"
+                              }
+                            }
+                          ],
+                          "secure": false,
+                          "mapDetails": {
+                            "/Scripts/workflowinsights.py/ScriptName": "workflowinsights.py"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/Scripts/workflowinsights.py/ScriptName": "workflowinsights.py"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "Scripts",
+                          "value": "workflowinsights.py",
+                          "details": [
+                            {
+                              "id": "ScriptTimeout",
+                              "value": "30",
+                              "secure": false,
+                              "mapDetails": {
+                                "/ScriptTimeout": "30"
+                              }
+                            }
+                          ],
+                          "secure": false,
+                          "mapDetails": {
+                            "/Scripts/workflowinsights.py/ScriptTimeout": "30"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/Scripts/workflowinsights.py/ScriptTimeout": "30"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "Scripts",
+                          "value": "workflowinsights.py",
+                          "details": [
+                            {
+                              "id": "ScriptPollInterval",
+                              "value": "300",
+                              "secure": false,
+                              "mapDetails": {
+                                "/ScriptPollInterval": "300"
+                              }
+                            }
+                          ],
+                          "secure": false,
+                          "mapDetails": {
+                            "/Scripts/workflowinsights.py/ScriptPollInterval": "300"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/Scripts/workflowinsights.py/ScriptPollInterval": "300"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "Scripts",
+                          "value": "workflowinsights.py",
+                          "details": [
+                            {
+                              "id": "ScriptIndependentMonitorView",
+                              "value": "0",
+                              "secure": false,
+                              "mapDetails": {
+                                "/ScriptIndependentMonitorView": "0"
+                              }
+                            }
+                          ],
+                          "secure": false,
+                          "mapDetails": {
+                            "/Scripts/workflowinsights.py/ScriptIndependentMonitorView": "0"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/Scripts/workflowinsights.py/ScriptIndependentMonitorView": "0"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "Scripts",
+                          "value": "workflowinsights.py",
+                          "details": [
+                            {
+                              "id": "Path",
+                              "value": "/usr/bin/python /opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/workflowinsights.py -d",
+                              "secure": false,
+                              "mapDetails": {
+                                "/Path": "/usr/bin/python /opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/workflowinsights.py -d"
+                              }
+                            }
+                          ],
+                          "secure": false,
+                          "mapDetails": {
+                            "/Scripts/workflowinsights.py/Path": "/usr/bin/python /opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/workflowinsights.py -d"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/Scripts/workflowinsights.py/Path": "/usr/bin/python /opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/workflowinsights.py -d"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "Scripts",
+                          "value": "controlm.py",
+                          "details": [
+                            {
+                              "id": "ScriptName",
+                              "value": "controlm.py",
+                              "secure": false,
+                              "mapDetails": {
+                                "/ScriptName": "controlm.py"
+                              }
+                            }
+                          ],
+                          "secure": false,
+                          "mapDetails": {
+                            "/Scripts/controlm.py/ScriptName": "controlm.py"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/Scripts/controlm.py/ScriptName": "controlm.py"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "Scripts",
+                          "value": "controlm.py",
+                          "details": [
+                            {
+                              "id": "ScriptTimeout",
+                              "value": "30",
+                              "secure": false,
+                              "mapDetails": {
+                                "/ScriptTimeout": "30"
+                              }
+                            }
+                          ],
+                          "secure": false,
+                          "mapDetails": {
+                            "/Scripts/controlm.py/ScriptTimeout": "30"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/Scripts/controlm.py/ScriptTimeout": "30"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "Scripts",
+                          "value": "controlm.py",
+                          "details": [
+                            {
+                              "id": "ScriptPollInterval",
+                              "value": "300",
+                              "secure": false,
+                              "mapDetails": {
+                                "/ScriptPollInterval": "300"
+                              }
+                            }
+                          ],
+                          "secure": false,
+                          "mapDetails": {
+                            "/Scripts/controlm.py/ScriptPollInterval": "300"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/Scripts/controlm.py/ScriptPollInterval": "300"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "Scripts",
+                          "value": "controlm.py",
+                          "details": [
+                            {
+                              "id": "ScriptIndependentMonitorView",
+                              "value": "0",
+                              "secure": false,
+                              "mapDetails": {
+                                "/ScriptIndependentMonitorView": "0"
+                              }
+                            }
+                          ],
+                          "secure": false,
+                          "mapDetails": {
+                            "/Scripts/controlm.py/ScriptIndependentMonitorView": "0"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/Scripts/controlm.py/ScriptIndependentMonitorView": "0"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "Scripts",
+                          "value": "controlm.py",
+                          "details": [
+                            {
+                              "id": "Path",
+                              "value": "/usr/bin/python /opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/controlm.py -d",
+                              "secure": false,
+                              "mapDetails": {
+                                "/Path": "/usr/bin/python /opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/controlm.py -d"
+                              }
+                            }
+                          ],
+                          "secure": false,
+                          "mapDetails": {
+                            "/Scripts/controlm.py/Path": "/usr/bin/python /opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/controlm.py -d"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/Scripts/controlm.py/Path": "/usr/bin/python /opt/bmc/Patrol3/TRO/Conf/Scripts/control-m/controlm.py -d"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "UserName",
+                          "value": "patrol",
+                          "secure": false,
+                          "mapDetails": {
+                            "/UserName": "patrol"
+                          }
+                        }
+                      ],
+                      "secure": false,
+                      "mapDetails": {
+                        "/Devices/localhost/UserName": "patrol"
+                      }
+                    },
+                    {
+                      "id": "Devices",
+                      "value": "localhost",
+                      "details": [
+                        {
+                          "id": "Password",
+                          "value": "********",
+                          "secure": true,
+                          "mapDetails": {
+                            "/Password": "********"
+                          }
+                        }
+                      ],
+                      "secure": true,
+                      "mapDetails": {
+                        "/Devices/localhost/Password": "********"
+                      }
+                    }
+                  ],
+                  "validated": false
+                }
+              ],
+              "defaultMonitoring": false,
+              "validated": false
+            }
+          ],
+          "validated": false
+        },
+        "shared": false,
+        "enabled": true
+      }
+    }
+  ]
+}

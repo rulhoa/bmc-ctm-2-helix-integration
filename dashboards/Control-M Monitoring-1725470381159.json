@@ -1,0 +1,2123 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_BMC_HELIX",
+      "label": "BMC Helix",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "bmchelix-ade-datasource",
+      "pluginName": "BMC Helix"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "datasource",
+      "id": "bmchelix-ade-datasource",
+      "name": "BMC Helix",
+      "version": "3.0.1"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.4.2"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "state-timeline",
+      "name": "State timeline",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 10,
+      "panels": [],
+      "title": "Control-M Server Overview",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "color": "green",
+                        "index": 0,
+                        "text": "Up"
+                      },
+                      "1": {
+                        "color": "red",
+                        "index": 1,
+                        "text": "Down"
+                      },
+                      "-1": {
+                        "color": "orange",
+                        "index": 2,
+                        "text": "Unknown"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 3,
+        "x": 0,
+        "y": 1
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "State{entityTypeId=\"CTRLM_SERVER\", entityName=~\"$ControlMServer\"}",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Server State",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 3,
+        "y": 1
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "NumHostGroups{entityTypeId=\"CTRLM_SERVER\", entityName=~\"$ControlMServer\"}",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Number of Host Groups",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": true
+          },
+          "mappings": [],
+          "noValue": "null",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "color": "green",
+                        "index": 0,
+                        "text": "Up"
+                      },
+                      "1": {
+                        "color": "red",
+                        "index": 1,
+                        "text": "Down"
+                      },
+                      "-1": {
+                        "color": "orange",
+                        "index": 2,
+                        "text": "Unknown"
+                      },
+                      "null": {
+                        "color": "blue",
+                        "index": 3,
+                        "text": "Unknown"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 17,
+        "x": 7,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "State{entityTypeId=\"CTRLM_SERVER\", entityName=~\"$ControlMServer\"}",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "{{entityName}}",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Server State Timeline",
+      "type": "state-timeline"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 11,
+      "panels": [],
+      "title": "Agent Details",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 0,
+        "y": 8
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "AgentsUnavailable{entityTypeId=\"CTRLM_SERVER\",entityName=~\"$ControlMServer\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "B",
+          "sourceQuery": {
+            "expr": "AgentsAvailable{entityTypeId=\"CTRLM_SERVER\",entityName=~\"$ControlMServer\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "C",
+          "sourceQuery": {
+            "expr": "AgentsDiscovering{entityTypeId=\"CTRLM_SERVER\",entityName=~\"$ControlMServer\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "D",
+          "sourceQuery": {
+            "expr": "AgentsDisabled{entityTypeId=\"CTRLM_SERVER\",entityName=~\"$ControlMServer\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "E",
+          "sourceQuery": {
+            "expr": "AgentsDisable{entityTypeId=\"CTRLM_SERVER\",entityName=~\"$ControlMServer\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Total Agents",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "hostname",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "TotalAgents",
+            "mode": "reduceRow",
+            "reduce": {
+              "include": [
+                "Value #A",
+                "Value #B",
+                "Value #C",
+                "Value #D",
+                "Value #E"
+              ],
+              "reducer": "sum"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 4,
+        "y": 8
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "AgentsAvailable{entityTypeId=\"CTRLM_SERVER\",entityName=~\"$ControlMServer\"}",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Agents Available",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 8,
+        "y": 8
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "AgentsUnavailable{entityTypeId=\"CTRLM_SERVER\",entityName=~\"$ControlMServer\"}",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Agents Unavailable",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "orange",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 12,
+        "y": 8
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "AgentsDisabled{entityTypeId=\"CTRLM_SERVER\",entityName=~\"$ControlMServer\"}",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Agents Disabled",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 16,
+        "y": 8
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "AgentsDisable{entityTypeId=\"CTRLM_SERVER\",entityName=~\"$ControlMServer\"}",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Agents Disable",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "purple",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 20,
+        "y": 8
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "AgentsDiscovering{entityTypeId=\"CTRLM_SERVER\",entityName=~\"$ControlMServer\"}",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Agents Discovering",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "color": "green",
+                        "index": 0,
+                        "text": "Available"
+                      },
+                      "1": {
+                        "color": "red",
+                        "index": 1,
+                        "text": "Unavailable"
+                      },
+                      "2": {
+                        "color": "orange",
+                        "index": 2,
+                        "text": "Disabled"
+                      },
+                      "3": {
+                        "color": "orange",
+                        "index": 3,
+                        "text": "Disable"
+                      },
+                      "4": {
+                        "color": "purple",
+                        "index": 4,
+                        "text": "Discovering"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.align",
+                "value": "left"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Host Name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 255
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_AGENT\", entityName=~\"$ControlMServer.*\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Agent Information",
+      "transformations": [
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": false,
+                "field": "Host Name"
+              }
+            ]
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              " 1 ": true,
+              " 2 ": true,
+              " 3 ": true,
+              " 4 ": true,
+              "Time": false,
+              "Value": false,
+              "VictoriaMetrics_AccountID": true,
+              "__name__": true,
+              "entityId": true,
+              "entityTypeId": true,
+              "hostType": true,
+              "instanceName": true,
+              "isDeviceMappingEnabled": true,
+              "isKpi": true,
+              "source": true,
+              "unit": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Value": "Status",
+              "entityName": "Agent Name",
+              "hostname": "Host Name",
+              "instanceName": "",
+              "operatingSystem": "Operating System",
+              "tag": "Tag",
+              "type": "Agent Type",
+              "version": "Agent Version"
+            }
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Agent Type": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Agent Version": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Host Name": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Operating System": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Status": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "Tag": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "hostType": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Agent Type": false
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Agent Type": 1,
+              "Agent Version": 2,
+              "Host Name": 0,
+              "Operating System": 3,
+              "Status (lastNotNull)": 5,
+              "Tag": 4
+            },
+            "renameByName": {
+              "Host Name": "Host Name",
+              "Status (lastNotNull)": "Status"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 13,
+      "panels": [],
+      "title": "Service SLA Details",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "orange"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 0,
+        "y": 25
+      },
+      "id": 15,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "ActiveServices{entityTypeId=\"CTRLM_SERVER\", entityName=~\"$ControlMServer\"}",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "Number of Active SLA Services",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "color": "green",
+                        "index": 0,
+                        "text": "OK"
+                      },
+                      "1": {
+                        "color": "green",
+                        "index": 1,
+                        "text": "Completed OK"
+                      },
+                      "2": {
+                        "color": "yellow",
+                        "index": 2,
+                        "text": "Completed Late"
+                      },
+                      "3": {
+                        "color": "red",
+                        "index": 3,
+                        "text": "Not OK"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.align",
+                "value": "left"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Error"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "color": "green",
+                        "index": 0
+                      }
+                    },
+                    "type": "value"
+                  },
+                  {
+                    "options": {
+                      "from": 1,
+                      "result": {
+                        "color": "red",
+                        "index": 1
+                      },
+                      "to": 10000000000
+                    },
+                    "type": "range"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "id": 16,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_SLA_SERVICE\", entityName=~\"$ControlMServer.*\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "B",
+          "sourceQuery": {
+            "expr": "CompletionPercentage{entityTypeId=\"CTRLM_SLA_SERVICE\", entityName=~\"$ControlMServer.*\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "C",
+          "sourceQuery": {
+            "expr": "JobStatusExecuted{entityTypeId=\"CTRLM_SLA_SERVICE\", entityName=~\"$ControlMServer.*\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "D",
+          "sourceQuery": {
+            "expr": "Status{entityTypeId=\"CTRLM_SLA_SERVICE\", entityName=~\"$ControlMServer.*\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "E",
+          "sourceQuery": {
+            "expr": "JobStatusWaitResource{entityTypeId=\"CTRLM_SLA_SERVICE\", entityName=~\"$ControlMServer.*\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "F",
+          "sourceQuery": {
+            "expr": "JobStatusWaitHost{entityTypeId=\"CTRLM_SLA_SERVICE\", entityName=~\"$ControlMServer.*\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "G",
+          "sourceQuery": {
+            "expr": "JobStatusWaitWorkLoad{entityTypeId=\"CTRLM_SLA_SERVICE\", entityName=~\"$ControlMServer.*\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "H",
+          "sourceQuery": {
+            "expr": "JobStatusCompleted{entityTypeId=\"CTRLM_SLA_SERVICE\", entityName=~\"$ControlMServer.*\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        },
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "hide": false,
+          "refId": "I",
+          "sourceQuery": {
+            "expr": "JobStatusError{entityTypeId=\"CTRLM_SLA_SERVICE\", entityName=~\"$ControlMServer.*\"}",
+            "format": "table",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "",
+            "source": "Monitor"
+          },
+          "sourceType": "metric"
+        }
+      ],
+      "title": "SLA Service Information",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "entityName",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              " 1 ": true,
+              " 1  1": true,
+              " 1  2": true,
+              " 2 ": true,
+              " 2  1": true,
+              " 2  2": true,
+              " 3 ": true,
+              " 3  1": true,
+              " 3  2": true,
+              "Time": true,
+              "Time 1": true,
+              "Time 2": true,
+              "Time 3": true,
+              "Time 4": true,
+              "Time 5": true,
+              "Time 6": true,
+              "Time 7": true,
+              "Time 8": true,
+              "Time 9": true,
+              "VictoriaMetrics_AccountID": true,
+              "VictoriaMetrics_AccountID 1": true,
+              "VictoriaMetrics_AccountID 2": true,
+              "VictoriaMetrics_AccountID 3": true,
+              "VictoriaMetrics_AccountID 4": true,
+              "VictoriaMetrics_AccountID 5": true,
+              "VictoriaMetrics_AccountID 6": true,
+              "VictoriaMetrics_AccountID 7": true,
+              "VictoriaMetrics_AccountID 8": true,
+              "VictoriaMetrics_AccountID 9": true,
+              "__name__": true,
+              "__name__ 1": true,
+              "__name__ 2": true,
+              "__name__ 3": true,
+              "__name__ 4": true,
+              "__name__ 5": true,
+              "__name__ 6": true,
+              "__name__ 7": true,
+              "__name__ 8": true,
+              "__name__ 9": true,
+              "entityId": true,
+              "entityId 1": true,
+              "entityId 2": true,
+              "entityId 3": true,
+              "entityId 4": true,
+              "entityId 5": true,
+              "entityId 6": true,
+              "entityId 7": true,
+              "entityId 8": true,
+              "entityId 9": true,
+              "entityTypeId": true,
+              "entityTypeId 1": true,
+              "entityTypeId 2": true,
+              "entityTypeId 3": true,
+              "entityTypeId 4": true,
+              "entityTypeId 5": true,
+              "entityTypeId 6": true,
+              "entityTypeId 7": true,
+              "entityTypeId 8": true,
+              "entityTypeId 9": true,
+              "hostType": true,
+              "hostType 1": true,
+              "hostType 2": true,
+              "hostType 3": true,
+              "hostType 4": true,
+              "hostType 5": true,
+              "hostType 6": true,
+              "hostType 8": true,
+              "hostType 9": true,
+              "hostname 1": false,
+              "hostname 2": true,
+              "hostname 3": true,
+              "hostname 4": true,
+              "hostname 5": true,
+              "hostname 6": true,
+              "hostname 7": true,
+              "hostname 8": true,
+              "hostname 9": true,
+              "instanceName 1": true,
+              "instanceName 2": true,
+              "instanceName 3": true,
+              "instanceName 4": true,
+              "instanceName 5": true,
+              "instanceName 6": true,
+              "instanceName 7": true,
+              "instanceName 8": true,
+              "instanceName 9": true,
+              "isDeviceMappingEnabled": true,
+              "isDeviceMappingEnabled 1": true,
+              "isDeviceMappingEnabled 2": true,
+              "isDeviceMappingEnabled 3": true,
+              "isDeviceMappingEnabled 4": true,
+              "isDeviceMappingEnabled 5": true,
+              "isDeviceMappingEnabled 6": true,
+              "isDeviceMappingEnabled 7": true,
+              "isDeviceMappingEnabled 8": true,
+              "isDeviceMappingEnabled 9": true,
+              "isKpi": true,
+              "isKpi 1": true,
+              "isKpi 2": true,
+              "isKpi 3": true,
+              "isKpi 4": true,
+              "isKpi 5": true,
+              "isKpi 6": true,
+              "isKpi 7": true,
+              "isKpi 8": true,
+              "isKpi 9": true,
+              "source": true,
+              "source 1": true,
+              "source 2": true,
+              "source 3": true,
+              "source 4": true,
+              "source 5": true,
+              "source 6": true,
+              "source 7": true,
+              "source 8": true,
+              "source 9": true,
+              "unit": true,
+              "unit 1": true,
+              "unit 2": true,
+              "unit 3": true,
+              "unit 4": true,
+              "unit 5": true,
+              "unit 6": true,
+              "unit 7": true,
+              "unit 8": true,
+              "unit 9": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Value #A": "Status",
+              "Value #B": "Completion Percentage",
+              "Value #C": "Executed",
+              "Value #D": "Wait",
+              "Value #E": "Wait Resource",
+              "Value #F": "Wait Host",
+              "Value #G": "Wait Workload",
+              "Value #H": "Completed",
+              "Value #I": "Error",
+              "entityName": "SLA Service",
+              "hostname 1": "Control-M Server",
+              "unit 2": ""
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 41
+      },
+      "id": 17,
+      "panels": [],
+      "title": "Events",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "bmchelix-ade-datasource",
+        "uid": "${DS_BMC_HELIX}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "msg"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 554
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "object_class"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 253
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Severity"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "CRITICAL": {
+                        "color": "red",
+                        "index": 0
+                      },
+                      "MAJOR": {
+                        "color": "dark-orange",
+                        "index": 1
+                      },
+                      "MINOR": {
+                        "color": "orange",
+                        "index": 2
+                      },
+                      "WARNING": {
+                        "color": "yellow",
+                        "index": 3
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 42
+      },
+      "id": 18,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "bmchelix-ade-datasource",
+            "uid": "${DS_BMC_HELIX}"
+          },
+          "refId": "A",
+          "sourceQuery": {
+            "alias": "",
+            "bucketAggs": [],
+            "metrics": [
+              {
+                "id": "1",
+                "settings": {
+                  "size": "500"
+                },
+                "type": "raw_data"
+              }
+            ],
+            "query": "class:ALARM AND object_class:Control-M_CTRLM_.* AND status:OPEN",
+            "timeField": "creation_time"
+          },
+          "sourceType": "event"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "CreateIncident": true,
+              "Temp01": true,
+              "Temp02": true,
+              "Temp03": true,
+              "Temp04": true,
+              "Temp05": true,
+              "Temp06": true,
+              "Temp07": true,
+              "Temp08": true,
+              "Temp09": true,
+              "Temp10": true,
+              "_arrival_time": true,
+              "_ci_id": true,
+              "_entropy": true,
+              "_errors": true,
+              "_id": true,
+              "_identifier": true,
+              "_impacted_service_key": true,
+              "_impacted_service_name": true,
+              "_index": true,
+              "_lifecycle_time": true,
+              "_model": true,
+              "_modified_time": true,
+              "_node_id": true,
+              "_node_impacted_service_key_mapping": true,
+              "_node_key": true,
+              "_node_service_key_mapping": true,
+              "_node_service_mapping": true,
+              "_notes": true,
+              "_operations": true,
+              "_relationships.rstat": true,
+              "_repeat_count": true,
+              "_service_id": true,
+              "_service_key": true,
+              "_service_name": true,
+              "_signature": true,
+              "_tenant_id": true,
+              "_tenant_name": true,
+              "_type": true,
+              "_unmapped_data.al_baseline_type": true,
+              "_unmapped_data.ci_incident_type": true,
+              "_unmapped_data.event_ids": true,
+              "agent_address": true,
+              "agent_name": true,
+              "agent_port": true,
+              "al_agent_name": true,
+              "al_agent_os": true,
+              "al_agent_port": true,
+              "al_alarm_id": true,
+              "al_algorithm_name": true,
+              "al_avg_value": true,
+              "al_baseline_daily_high": true,
+              "al_baseline_daily_low": true,
+              "al_baseline_hourly_high": true,
+              "al_baseline_hourly_low": true,
+              "al_baseline_weekly_high": true,
+              "al_baseline_weekly_low": true,
+              "al_device_ipaddress": true,
+              "al_end_time": true,
+              "al_event_score": true,
+              "al_extremeness": true,
+              "al_highest_severity": true,
+              "al_highest_severity_ordinal": true,
+              "al_is_predicted": true,
+              "al_is_predicted_ordinal": true,
+              "al_last_time": true,
+              "al_old_severity": true,
+              "al_old_severity_ordinal": true,
+              "al_parameter_name": true,
+              "al_parameter_threshold": true,
+              "al_parameter_unit": true,
+              "al_parameter_value": true,
+              "al_predict_to_occur_time": true,
+              "al_prediction_severity": true,
+              "al_pts_exceeded": true,
+              "al_pts_total": true,
+              "al_thresh_above": true,
+              "al_thresh_above_ordinal": true,
+              "al_thresh_duration": true,
+              "al_thresh_id": true,
+              "al_thresh_type": true,
+              "alias": true,
+              "bOrphanedRoot": true,
+              "category": true,
+              "category_ordinal": true,
+              "cdmclass": true,
+              "change_id": true,
+              "ci_incident_type": true,
+              "ci_incident_type_ordinal": true,
+              "component_id": true,
+              "componentalias": true,
+              "cross_launch_uri": true,
+              "details": true,
+              "entity_identifier": true,
+              "event_ids": true,
+              "event_internal_tags": true,
+              "external_id": true,
+              "highlight": true,
+              "incident_assignee": true,
+              "incident_assignee_group": true,
+              "incident_category": true,
+              "incident_company": true,
+              "incident_id": true,
+              "incident_item": true,
+              "incident_operational_category1": true,
+              "incident_operational_category2": true,
+              "incident_operational_category3": true,
+              "incident_priority": true,
+              "incident_relation_source": true,
+              "incident_status": true,
+              "incident_submitter": true,
+              "incident_sysid": true,
+              "incident_type": true,
+              "instancename": true,
+              "is_updated": true,
+              "location": true,
+              "manually_created_incident": true,
+              "metric_name": true,
+              "metric_unit": true,
+              "metric_value": true,
+              "modelname": true,
+              "notificationService": true,
+              "object": true,
+              "object_id": true,
+              "policy_name": true,
+              "priority": true,
+              "priority_ordinal": true,
+              "severity_ordinal": true,
+              "significance": true,
+              "sort": true,
+              "sourceEntityType": true,
+              "source_address": true,
+              "source_identifier": true,
+              "source_port": true,
+              "status": true,
+              "status_ordinal": true,
+              "sub_category": true,
+              "sub_category_ordinal": true,
+              "tags": true,
+              "user_assigned": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "CreateIncident": 2,
+              "_arrival_time": 3,
+              "_ci_id": 4,
+              "_entropy": 5,
+              "_errors": 6,
+              "_id": 7,
+              "_identifier": 8,
+              "_impacted_service_key": 9,
+              "_impacted_service_name": 10,
+              "_index": 11,
+              "_lifecycle_time": 12,
+              "_model": 13,
+              "_modified_time": 14,
+              "_node_id": 15,
+              "_node_impacted_service_key_mapping": 16,
+              "_node_key": 17,
+              "_node_service_key_mapping": 18,
+              "_node_service_mapping": 19,
+              "_notes": 20,
+              "_operations": 21,
+              "_relationships.rstat": 22,
+              "_repeat_count": 23,
+              "_service_id": 24,
+              "_service_key": 25,
+              "_service_name": 26,
+              "_signature": 27,
+              "_tenant_id": 28,
+              "_tenant_name": 29,
+              "_type": 30,
+              "_unmapped_data.al_baseline_type": 31,
+              "agent_address": 32,
+              "agent_name": 33,
+              "agent_port": 34,
+              "al_agent_name": 35,
+              "al_agent_os": 36,
+              "al_agent_port": 37,
+              "al_alarm_id": 38,
+              "al_algorithm_name": 39,
+              "al_avg_value": 40,
+              "al_baseline_daily_high": 41,
+              "al_baseline_daily_low": 42,
+              "al_baseline_hourly_high": 43,
+              "al_baseline_hourly_low": 44,
+              "al_baseline_weekly_high": 45,
+              "al_baseline_weekly_low": 46,
+              "al_device_ipaddress": 47,
+              "al_end_time": 48,
+              "al_event_score": 49,
+              "al_extremeness": 50,
+              "al_highest_severity": 51,
+              "al_highest_severity_ordinal": 52,
+              "al_is_predicted": 53,
+              "al_is_predicted_ordinal": 54,
+              "al_last_time": 55,
+              "al_old_severity": 56,
+              "al_old_severity_ordinal": 57,
+              "al_parameter_name": 58,
+              "al_parameter_threshold": 59,
+              "al_parameter_unit": 60,
+              "al_parameter_value": 61,
+              "al_predict_to_occur_time": 62,
+              "al_prediction_severity": 63,
+              "al_pts_exceeded": 64,
+              "al_pts_total": 65,
+              "al_thresh_above": 66,
+              "al_thresh_above_ordinal": 67,
+              "al_thresh_duration": 68,
+              "al_thresh_id": 69,
+              "al_thresh_type": 70,
+              "alias": 71,
+              "category": 72,
+              "category_ordinal": 73,
+              "cdmclass": 74,
+              "change_id": 75,
+              "class": 76,
+              "componentalias": 77,
+              "creation_time": 0,
+              "cross_launch_uri": 78,
+              "details": 79,
+              "entity_identifier": 80,
+              "event_internal_tags": 81,
+              "external_id": 82,
+              "highlight": 83,
+              "incident_category": 84,
+              "incident_company": 85,
+              "incident_id": 86,
+              "incident_item": 87,
+              "incident_operational_category1": 88,
+              "incident_operational_category2": 89,
+              "incident_operational_category3": 90,
+              "incident_sysid": 91,
+              "incident_type": 92,
+              "instancename": 93,
+              "is_updated": 94,
+              "location": 95,
+              "metric_name": 96,
+              "metric_unit": 97,
+              "metric_value": 98,
+              "modelname": 99,
+              "msg": 100,
+              "notificationService": 101,
+              "object": 102,
+              "object_class": 103,
+              "object_id": 104,
+              "priority": 105,
+              "priority_ordinal": 106,
+              "severity": 107,
+              "severity_ordinal": 108,
+              "significance": 109,
+              "sort": 110,
+              "sourceEntityType": 111,
+              "source_address": 112,
+              "source_hostname": 1,
+              "source_identifier": 113,
+              "source_port": 114,
+              "status": 115,
+              "status_ordinal": 116,
+              "sub_category": 117,
+              "sub_category_ordinal": 118,
+              "tags": 119,
+              "user_assigned": 120
+            },
+            "renameByName": {
+              "class": "Class",
+              "creation_time": "Creation Time",
+              "msg": "Message",
+              "object_class": "Object Class",
+              "severity": "Severity",
+              "source_hostname": "Hostname",
+              "status": "Status"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "bmchelix-ade-datasource",
+          "uid": "${DS_BMC_HELIX}"
+        },
+        "definition": "metric,label_values({entityTypeId=\"CTRLM_SERVER\",__name__=\"State\"},entityName)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Control-M Server",
+        "multi": false,
+        "name": "ControlMServer",
+        "options": [],
+        "query": "metric,label_values({entityTypeId=\"CTRLM_SERVER\",__name__=\"State\"},entityName)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "datasource": {
+          "type": "bmchelix-ade-datasource",
+          "uid": "YU1v37-7z"
+        },
+        "filters": [],
+        "hide": 0,
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Control-M Monitoring",
+  "uid": "advj7pm2qqbr4a",
+  "version": 35,
+  "weekStart": ""
+}
