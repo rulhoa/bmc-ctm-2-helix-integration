@@ -75,17 +75,17 @@ https://github.com/controlm/automation-api-community-solutions/blob/master/helix
 
 ### Event Policies
 
-Event policy that deduplicates CTM events and does discovery node lookup refinements. The lookup seeks to match events with the corresponding CI (job, folder, agent, etc) in Discovery
+[Event policy](event_policies/) that deduplicates CTM events and does discovery node lookup refinements. The lookup seeks to match events with the corresponding CI (job, folder, agent, etc) in Discovery
 
 ## Metrics
 
-(Monitor policy definition)[monitor_policies/] for collecting metrics from Control-M using the script KM to query Control-M APIs.
+[Monitor policy definition](monitor_policies/) for collecting metrics from Control-M using the script KM to query Control-M APIs.
 
 Pre-req: Helix Monitor Agent (Patrol Agent) needs to have been installed, on a host with access to Control-M/EM, with the script KM.
 
 ## Dashboards
 
-(Helix Dashboards)[dashboards/] that leverage metrics collected by the monitor_policies for a Control-M Workflow Insights experience inside Helix.
+[Helix Dashboards](dashboards/) that leverage metrics collected by the monitor_policies for a Control-M Workflow Insights experience inside Helix.
 
 ## Automation
 
