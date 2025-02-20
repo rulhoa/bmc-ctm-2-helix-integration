@@ -89,6 +89,6 @@ Pre-req: Helix Monitor Agent (Patrol Agent) needs to have been installed, on a h
 
 ## Automation
 
-Step-by-step guide on setting up HIA connectors. The guide is much more wide ranging and includes steps on:
+[Step-by-step guide on setting up HIA connectors](hia/Step-by-Step Guide on using HIA Connectors.docx). The guide is much more wide ranging and includes steps on:
 - Using the generic_rest connector with Control-M;
 - Using HIA and Innovation Studio workflows with Control-M.
