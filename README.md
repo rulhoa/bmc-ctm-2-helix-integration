@@ -42,6 +42,9 @@ Jobs may also be connected to connection profiles.
 Event classes need to be created in BHOM.
 
 Control-M Alert Engine needs to be configured to forward alerts as events to BHOM.
+- The Alert Engine can be configured to trigger a script whenever alerts are created, updated, and closed.
+- It’s the same mechanism that some customers use to open incidents in Helix ITSM.
+- A common usage pattern is for the initial script, which the Engine calls, to be configured to call other scripts specific for each desired actions (create incident, send alert to bhom, invoke SMS service, etc).  
 
 ### Event Classes
 
