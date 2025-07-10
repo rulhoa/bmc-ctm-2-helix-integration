@@ -14,5 +14,7 @@ Monitor Policy configuration screenshots
 
 5) ![control-m_config5.png](control-m_config5.png)
 
+Files can be downloaded from [scripts folder](scripts/).
+
 Remember to edit the "settings.ini" file with the information of your environment before adding it to the policy.
 All files are automatically downloaded by the agent.
