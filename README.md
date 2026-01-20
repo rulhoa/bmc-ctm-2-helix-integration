@@ -1,4 +1,4 @@
-# bmc-ctm-2-helix-integration
+# BMC Control-M and Helix Integration Resources
 
 Unofficial integration resources between BMC Control-M and BMC Helix Discovery and AIOps.
 
@@ -7,9 +7,11 @@ Unofficial integration resources between BMC Control-M and BMC Helix Discovery a
 Do note that all of these resources are prototypes and not suported by anyone, but have been used in live environments.
 [See License for disclaimers.](LICENSE)
 
-## Topology
+## 🧭 Topology
 
-### Discovery
+Using Helix Discovery to discovery Control-M jobs and mapping them in services.
+
+### 🔍 Discovering Control-M with Helix Discovery
 [TPL Folder](tpl/) container beta version of the TPL for discovering Control-M jobs and folders into DSM.
 
 Usage steps:
@@ -27,7 +29,7 @@ Jobs may also be connected to Control-M/Server and Agent responsible for it.
 
 Jobs may also be connected to connection profiles.
 
-### Blueprints
+### 📐 Modeling Services using Blueprints
 
 [Blueprints folder](blueprints/) contains options to model Control-M workflows as a service from different starting points:
 - Using Application attribute of jobs and folders
@@ -37,7 +39,11 @@ Jobs may also be connected to connection profiles.
 - Control-M Server to all jobs it orquestrates
 
 
-## Events
+## 👁️ Monitoring / Observability
+
+Using Helix AIOps to monitor Control-M
+
+### 🚨 Events
 
 Event classes need to be created in BHOM.
 
@@ -46,7 +52,7 @@ Control-M Alert Engine needs to be configured to forward alerts as events to BHO
 - It’s the same mechanism that some customers use to open incidents in Helix ITSM.
 - A common usage pattern is for the initial script, which the Engine calls, to be configured to call other scripts specific for each desired actions (create incident, send alert to bhom, invoke SMS service, etc).  
 
-### Event Classes
+#### 🧩 Event Classes
 
 Used for BHOM events created by Control-M alert engine scripts.
 
@@ -65,7 +71,7 @@ Create them in order.
 
 ![EventClasses.png](event_classes/EventClasses.png)
 
-### Control Alert Engine Scripts
+#### 🔔 Control Alert Engine Scripts
 
 Recommended the usage of:
 
@@ -76,21 +82,25 @@ There is also an official version in the public Control-M repo, but it doesn't p
 https://github.com/controlm/automation-api-community-solutions/blob/master/helix-control-m/2-external-monitoring-tools-examples/alerts-to-bhom/README.md
 
 
-### Event Policies
+#### 📏 Event Policies
 
 [Event policy](event_policies/) that deduplicates CTM events and does discovery node lookup refinements. The lookup seeks to match events with the corresponding CI (job, folder, agent, etc) in Discovery
 
-## Metrics
+## 📊 Metrics
 
 [Monitor policy definition](monitor_policies/) for collecting metrics from Control-M using the script KM to query Control-M APIs.
 
 Pre-req: Helix Monitor Agent (Patrol Agent) needs to have been installed, on a host with access to Control-M/EM, with the script KM.
 
-## Dashboards
+## 📈 Dashboards
 
-[Helix Dashboards](dashboards/) that leverage metrics collected by the monitor_policies for a Control-M Workflow Insights experience inside Helix.
+Using Helix Dashboards (Grafana based) to track Control-M metrics.
 
-## Automation
+This folder for [Helix Dashboards](dashboards/) contains exampples that leverage metrics collected by the monitor_policies for a Control-M Workflow Insights experience inside Helix.
+
+## 🤖 Automation
+
+Example of using Helix Intelligent Automation to trigger on Control-M events in Helix AIOps.
 
 [Step-by-step guide on setting up HIA connectors](hia/). The guide is much more wide ranging and includes steps on:
 - Using the generic_rest connector with Control-M;
